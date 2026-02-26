@@ -1,7 +1,15 @@
 #!/usr/bin/env python3
 
-def main():
-    print("Hello, world!")
+import uvicorn
+from fastapi import FastAPI
+
+app = FastAPI()
+
+
+@app.get("/")
+def hello():
+    return {"message": "Hello, world!"}
+
 
 if __name__ == "__main__":
-    main()
+    uvicorn.run(app, host="0.0.0.0", port=8080)
